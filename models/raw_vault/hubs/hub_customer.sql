@@ -1,4 +1,4 @@
-{%- set source_model = "v_stg_customer" -%}
+{%- set source_model = ["v_stg_customer","v_stg_web_customer"] -%}
 {%- set src_pk = "CUSTOMER_HK" -%}
 {%- set src_nk = "CUSTOMER_ID" -%}
 {%- set src_ldts = "LOAD_DATE" -%}

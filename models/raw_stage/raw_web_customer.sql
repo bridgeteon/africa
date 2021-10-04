@@ -16,13 +16,14 @@ C_LOGIN AS LOGIN,
 C_EMAIL_ADDRESS AS EMAIL_ADDRESS,
 C_LAST_REVIEW_DATE LAST_REVIEW_DATE_SK,
 dd.D_DATE AS LAST_REVIEW_DATE
-FROM {{ source('tpch_sample', 'CUSTOMER') }} AS c
-inner join  {{ source('tpch_sample', 'DATE_DIM') }} AS  dd
+FROM SNOWFLAKE_SAMPLE_DATA.TPCDS_SF10TCL.CUSTOMER AS c
+inner join  SNOWFLAKE_SAMPLE_DATA.TPCDS_SF10TCL.DATE_DIM AS  dd
 on dd.d_date_sk = c.c_last_review_date
 WHERE c.C_CUSTOMER_SK in ( 
-    select ss.SS_CUSTOMER_SK  
-    from {{ source('tpch_sample', 'STORE_SALES') }} AS ss
+    select ss.WS_BILL_CUSTOMER_SK  
+    from {{ source('tpch_sample', 'WEB_SALES') }} AS ss
     inner join {{ source('tpch_sample', 'DATE_DIM') }} AS ds
-    on ds.d_date_sk = ss.ss_sold_date_sk 
-    WHERE ds.D_DATE = TO_DATE('{{ var('load_date') }}')
-           )
+    on ds.d_date_sk = ss.ws_sold_date_sk 
+    WHERE ds.D_DATE >= TO_DATE('{{ var('load_start_date') }}')
+      AND ds.D_DATE <= TO_DATE('{{ var('load_date') }}')
+   )

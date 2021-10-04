@@ -19,7 +19,8 @@ test-paths:
 target-path: target
 
 vars:
-  load_date: '2002-01-05'
+  load_start_date: '2002-01-06'
+  load_date: '2002-01-06'
   tpch_size: 10 #1, 10, 100, 1000, 10000
 
 models:

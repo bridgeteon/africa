@@ -1,35 +1,26 @@
 {%- set yaml_metadata -%}
-source_model: 'raw_item'
+source_model: 'raw_web_customer'
 derived_columns:
-  RECORD_SOURCE: '!TPCDS-ITEM'
-  EFFECTIVE_FROM: 'REC_START_DATE'
+  RECORD_SOURCE: '!TPCH-WEB-CUSTOMER'
+  EFFECTIVE_FROM: 'LAST_REVIEW_DATE'
 hashed_columns:
-  ITEM_HK: 'ITEM_ID'
-  ITEM_HEADER_HASHDIFF:
+  CUSTOMER_HK: 'CUSTOMER_ID'
+  CUSTOMER_DETAILS_HASHDIFF:
     is_hashdiff: true
     columns:
-    - 'ITEM_DESC'
-    - 'BRAND'
-    - 'CATEGORY_ID'
-    - 'CATEGORY'
-    - 'CLASS_ID'
-    - 'CLASS'
-    - 'COLOR'
-    - 'CONTAINER'
-    - 'FORMULATION'
-    - 'MANUFACT_ID'
-    - 'MANUFACT'
-    - 'PRODUCT_NAME'
-  ITEM_DETAILS_HASHDIFF:
+    - 'CUSTOMER_ID'
+    - 'SALUTATION'
+    - 'FIRST_NAME'
+    - 'LAST_NAME'
+    - 'PREFERRED_CUST_FLAG'
+    - 'EMAIL_ADDRESS'
+  CUSTOMER_PII_HASHDIFF:
     is_hashdiff: true
     columns:
-    - 'CURRENT_PRICE'
-    - 'SIZE'
-    - 'UNITS'
-    - 'WHOLESALE_COST'
-    - 'MANAGER_ID'
-    - 'REC_START_DATE'
-    - 'REC_END_DATE'
+    - 'BIRTH_DAY'
+    - 'BIRTH_MONTH'
+    - 'BIRTH_YEAR'
+    - 'BIRTH_COUNTRY'
 {%- endset -%}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
