@@ -1,7 +1,7 @@
-{%- set source_model = "v_stg_inventory" -%}
-{%- set src_pk = "SUPPLIER_PK" -%}
-{%- set src_hashdiff = "SUPPLIER_HASHDIFF" -%}
-{%- set src_payload = ["SUPPLIER_ADDRESS", "SUPPLIER_PHONE", "SUPPLIER_ACCTBAL", "SUPPLIER_NAME", "SUPPLIER_COMMENT"] -%}
+{%- set source_model = "v_stg_customer" -%}
+{%- set src_pk = "CUSTOMER_HK" -%}
+{%- set src_hashdiff = "CUSTOMER_PII_HASHDIFF" -%}
+{%- set src_payload = ["BIRTH_DAY", "BIRTH_MONTH", "BIRTH_YEAR", "BIRTH_COUNTRY"] -%}
 {%- set src_eff = "EFFECTIVE_FROM" -%}
 {%- set src_ldts = "LOAD_DATE" -%}
 {%- set src_source = "RECORD_SOURCE" -%}

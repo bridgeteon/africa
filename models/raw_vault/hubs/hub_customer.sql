@@ -1,6 +1,6 @@
-{%- set source_model = "v_stg_orders" -%}
-{%- set src_pk = "CUSTOMER_PK" -%}
-{%- set src_nk = "CUSTOMERKEY" -%}
+{%- set source_model = "v_stg_customer" -%}
+{%- set src_pk = "CUSTOMER_HK" -%}
+{%- set src_nk = "CUSTOMER_ID" -%}
 {%- set src_ldts = "LOAD_DATE" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 

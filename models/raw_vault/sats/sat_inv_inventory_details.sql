@@ -1,7 +1,7 @@
 {%- set source_model = "v_stg_inventory" -%}
-{%- set src_pk = "INVENTORY_PK" -%}
+{%- set src_pk = "LINK_INVENTORY_HK" -%}
 {%- set src_hashdiff = "INVENTORY_HASHDIFF" -%}
-{%- set src_payload = ["AVAILQTY", "SUPPLYCOST", "PART_SUPPLY_COMMENT"] -%}
+{%- set src_payload = ["ITEM_ID","INVENTORY_DATE", "INV_QUANTITY_ON_HAND", "WAREHOUSE_ID", "WAREHOUSE_NAME"] -%}
 {%- set src_eff = "EFFECTIVE_FROM" -%}
 {%- set src_ldts = "LOAD_DATE" -%}
 {%- set src_source = "RECORD_SOURCE" -%}

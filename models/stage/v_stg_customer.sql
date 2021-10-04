@@ -1,22 +1,27 @@
 {%- set yaml_metadata -%}
-source_model: 'raw_inventory'
+source_model: 'raw_customer'
 derived_columns:
-  RECORD_SOURCE: '!TPCDS-INVENTORY'
-  EFFECTIVE_FROM: 'INVENTORY_DATE'
+  RECORD_SOURCE: '!TPCH-CUSTOMER'
+  EFFECTIVE_FROM: 'LAST_REVIEW_DATE'
 hashed_columns:
-  LINK_INVENTORY_HK: 
-  - 'ITEM_ID'
-  - 'WAREHOUSE_ID'
-  WAREHOUSE_HK: 'WAREHOUSE_ID'
-  ITEM_HK: 'ITEM_ID'
-  INVENTORY_HASHDIFF:
+  CUSTOMER_HK: 'CUSTOMER_ID'
+  CUSTOMER_DETAILS_HASHDIFF:
     is_hashdiff: true
     columns:
-    - 'ITEM_ID'
-    - 'WAREHOUSE_ID'
-    - 'INV_QUANTITY_ON_HAND'
-    - 'WAREHOUSE_NAME'
- {%- endset -%}
+    - 'CUSTOMER_ID'
+    - 'SALUTATION'
+    - 'FIRST_NAME'
+    - 'LAST_NAME'
+    - 'PREFERRED_CUST_FLAG'
+    - 'EMAIL_ADDRESS'
+  CUSTOMER_PII_HASHDIFF:
+    is_hashdiff: true
+    columns:
+    - 'BIRTH_DAY'
+    - 'BIRTH_MONTH'
+    - 'BIRTH_YEAR'
+    - 'BIRTH_COUNTRY'
+{%- endset -%}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
 
