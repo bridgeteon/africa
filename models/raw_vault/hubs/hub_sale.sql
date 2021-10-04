@@ -1,6 +1,6 @@
-{%- set source_model = ["v_stg_orders", "v_stg_inventory"] -%}
-{%- set src_pk = "SUPPLIER_PK" -%}
-{%- set src_nk = "SUPPLIERKEY" -%}
+{%- set source_model = "v_stg_store_sales" -%}
+{%- set src_pk = "SALE_HK" -%}
+{%- set src_nk = "TICKET_NUMBER" -%}
 {%- set src_ldts = "LOAD_DATE" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 

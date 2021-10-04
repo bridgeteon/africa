@@ -3,13 +3,15 @@ version: 2
 sources:
   - name: tpch_sample
     database: SNOWFLAKE_SAMPLE_DATA
-    schema: TPCH_SF{{ var('tpch_size', 10) }}
+    schema: TPCDS_SF{{ var('tpch_size', 10) }}TCL
     tables:
-      - name: LINEITEM
       - name: CUSTOMER
-      - name: ORDERS
-      - name: PARTSUPP
-      - name: SUPPLIER
-      - name: PART
-      - name: NATION
-      - name: REGION
+      - name: CUSTOMER_ADDRESS
+      - name: STORE_SALES
+      - name: WEB_SALES
+      - name: INVENTORY
+      - name: ITEM
+      - name: DATE_DIM
+      - name: TIME_DIM
+      - name: WAREHOUSE
+      - name: STORE

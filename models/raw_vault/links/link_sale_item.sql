@@ -1,6 +1,6 @@
-{%- set source_model = "v_stg_orders" -%}
-{%- set src_pk = "LINK_LINEITEM_ORDER_PK" -%}
-{%- set src_fk = ["ORDER_PK", "LINEITEM_PK"] -%}
+{%- set source_model = "v_stg_store_sales" -%}
+{%- set src_pk = "LINK_SALE_ITEM_HK" -%}
+{%- set src_fk = ["SALE_HK", "ITEM_HK"] -%}
 {%- set src_ldts = "LOAD_DATE" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 

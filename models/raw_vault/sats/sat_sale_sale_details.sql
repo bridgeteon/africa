@@ -1,7 +1,8 @@
-{%- set source_model = "v_stg_inventory" -%}
-{%- set src_pk = "PART_PK" -%}
-{%- set src_hashdiff = "PART_HASHDIFF" -%}
-{%- set src_payload = ["PART_NAME", "PART_MFGR", "PART_BRAND", "PART_TYPE", "PART_SIZE", "PART_CONTAINER", "PART_RETAILPRICE", "PART_COMMENT"] -%}
+{%- set source_model = "v_stg_store_sales" -%}
+{%- set src_pk = "SALE_HK" -%}
+{%- set src_hashdiff = "SALE_HASHDIFF" -%}
+{%- set src_payload = ["TICKET_NUMBER", "STORE_ID", "SOLD_DATE", "SOLD_TIME",
+                       "SOLD_HOUR", "SOLD_MINUTE", "SOLD_SECOND"] -%}
 {%- set src_eff = "EFFECTIVE_FROM" -%}
 {%- set src_ldts = "LOAD_DATE" -%}
 {%- set src_source = "RECORD_SOURCE" -%}

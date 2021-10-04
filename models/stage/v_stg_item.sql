@@ -1,22 +1,36 @@
 {%- set yaml_metadata -%}
-source_model: 'raw_inventory'
+source_model: 'raw_item'
 derived_columns:
-  RECORD_SOURCE: '!TPCDS-INVENTORY'
-  EFFECTIVE_FROM: 'INVENTORY_DATE'
+  RECORD_SOURCE: '!TPCDS-ITEM'
+  EFFECTIVE_FROM: 'REC_START_DATE'
 hashed_columns:
-  LINK_INVENTORY_HK: 
-  - 'ITEM_ID'
-  - 'WAREHOUSE_ID'
-  WAREHOUSE_HK: 'WAREHOUSE_ID'
   ITEM_HK: 'ITEM_ID'
-  INVENTORY_HASHDIFF:
+  ITEM_TYPE_HASHDIFF:
     is_hashdiff: true
     columns:
-    - 'ITEM_ID'
-    - 'WAREHOUSE_ID'
-    - 'INV_QUANTITY_ON_HAND'
-    - 'WAREHOUSE_NAME'
- {%- endset -%}
+    - 'ITEM_DESC'
+    - 'BRAND'
+    - 'CATEGORY_ID'
+    - 'CATEGORY'
+    - 'CLASS_ID'
+    - 'CLASS'
+    - 'COLOR'
+    - 'CONTAINER'
+    - 'FORMULATION'
+    - 'MANUFACT_ID'
+    - 'MANUFACT'
+    - 'PRODUCT_NAME'
+  ITEM_DETAILS_HASHDIFF:
+    is_hashdiff: true
+    columns:
+    - 'CURRENT_PRICE'
+    - 'SIZE'
+    - 'UNITS'
+    - 'WHOLESALE_COST'
+    - 'MANAGER_ID'
+    - 'REC_START_DATE'
+    - 'REC_END_DATE'
+{%- endset -%}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
 
