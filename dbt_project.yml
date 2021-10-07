@@ -20,14 +20,10 @@ target-path: target
 
 vars:
   load_date: '2002-01-05'
-  tpch_size: 10 #1, 10, 100, 1000, 10000
-
+  src-cd: P10 #1, C11, E03
+  
 models:
-  dbtvault_snowflake_demo:
-    raw_stage:
-      tags:
-        - 'raw'
-      materialized: view
+    dbtvault_snowflake_demo:
     stage:
       tags:
         - 'stage'
@@ -49,3 +45,19 @@ models:
       t_links:
         tags:
           - 't_link'
+      pit:
+        materialized: pit_incremental
+        tags:
+          - pit
+        pit_customer:
+          vars:
+            source_model: HUB_CUSTOMER
+            as_of_date_table: AS_OF_DATES
+            src_pk: CUSTOMER_HK
+            satellites: 
+                SAT_CUSTOMER_P10_KNA1:
+                    pk:
+                        'PK': 'CUSTOMER_HK'
+                    ldts:
+                        'LDTS': 'LOAD_EFF_DT'
+   

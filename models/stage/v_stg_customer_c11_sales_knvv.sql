@@ -1,35 +1,23 @@
+
 {%- set yaml_metadata -%}
-source_model: 'raw_item'
+source_model: 
+  sapc11_tbl: 'KNVV'
 derived_columns:
-  RECORD_SOURCE: '!TPCDS-ITEM'
-  EFFECTIVE_FROM: 'REC_START_DATE'
+  RECORD_SOURCE: '!SAPC11_KNVV'
+  LOAD_EFF_DT: TO_DATE('{{ var('load_date') }}')
 hashed_columns:
-  ITEM_HK: 'ITEM_ID'
-  ITEM_TYPE_HASHDIFF:
+  CUSTOMER_HK: 'KUNNR'
+  SALES_ORG_HK: 'VKORG'
+  DISTRIBUTION_CHANNEL_HK:  'VTWEG'
+  DIVISION_HK: 'SPART'
+  CUSTOMER_SALES_DISTRIBUTION_DIVISION_HK:
+  - 'KUNNR'
+  - 'VKORG'
+  - 'VTWEG'
+  - 'SPART'
+  LSAT_CUSTOMER_SALES_DISTRIBUTION_DIVISION_HASHDIFF:
     is_hashdiff: true
-    columns:
-    - 'ITEM_DESC'
-    - 'BRAND'
-    - 'CATEGORY_ID'
-    - 'CATEGORY'
-    - 'CLASS_ID'
-    - 'CLASS'
-    - 'COLOR'
-    - 'CONTAINER'
-    - 'FORMULATION'
-    - 'MANUFACT_ID'
-    - 'MANUFACT'
-    - 'PRODUCT_NAME'
-  ITEM_DETAILS_HASHDIFF:
-    is_hashdiff: true
-    columns:
-    - 'CURRENT_PRICE'
-    - 'SIZE'
-    - 'UNITS'
-    - 'WHOLESALE_COST'
-    - 'MANAGER_ID'
-    - 'REC_START_DATE'
-    - 'REC_END_DATE'
+    exclude_columns: true
 {%- endset -%}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
@@ -51,3 +39,4 @@ WITH staging AS (
 SELECT *,
        TO_DATE('{{ var('load_date') }}') AS LOAD_DATE
 FROM staging
+
