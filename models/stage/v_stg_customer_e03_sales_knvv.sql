@@ -1,26 +1,23 @@
+
 {%- set yaml_metadata -%}
-source_model: 'raw_customer'
+source_model: 
+  sape03_tbl: 'KNVV'
 derived_columns:
-  RECORD_SOURCE: '!TPCH-CUSTOMER'
-  EFFECTIVE_FROM: 'LAST_REVIEW_DATE'
+  RECORD_SOURCE: '!SAPE03_KNVV'
+  LOAD_EFF_DT: TO_DATE('{{ var('load_date') }}')
 hashed_columns:
-  CUSTOMER_HK: 'CUSTOMER_ID'
-  CUSTOMER_DETAILS_HASHDIFF:
+  CUSTOMER_HK: 'KUNNR'
+  SALES_ORG_HK: 'VKORG'
+  DISTRIBUTION_CHANNEL_HK:  'VTWEG'
+  DIVISION_HK: 'SPART'
+  CUSTOMER_SALES_DISTRIBUTION_DIVISION_HK:
+  - 'KUNNR'
+  - 'VKORG'
+  - 'VTWEG'
+  - 'SPART'
+  LSAT_CUSTOMER_SALES_DISTRIBUTION_DIVISION_HASHDIFF:
     is_hashdiff: true
-    columns:
-    - 'CUSTOMER_ID'
-    - 'SALUTATION'
-    - 'FIRST_NAME'
-    - 'LAST_NAME'
-    - 'PREFERRED_CUST_FLAG'
-    - 'EMAIL_ADDRESS'
-  CUSTOMER_PII_HASHDIFF:
-    is_hashdiff: true
-    columns:
-    - 'BIRTH_DAY'
-    - 'BIRTH_MONTH'
-    - 'BIRTH_YEAR'
-    - 'BIRTH_COUNTRY'
+    exclude_columns: true
 {%- endset -%}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
@@ -42,3 +39,4 @@ WITH staging AS (
 SELECT *,
        TO_DATE('{{ var('load_date') }}') AS LOAD_DATE
 FROM staging
+

@@ -1,6 +1,6 @@
-{%- set source_model = "v_stg_customer" -%}
+{%- set source_model = "v_stg_e03_customer","v_stg_p10_customer", "v_stg_c11_customer" -%}
 {%- set src_pk = "CUSTOMER_HK" -%}
-{%- set src_nk = "CUSTOMER_ID" -%}
+{%- set src_nk = "KUNNR" -%}
 {%- set src_ldts = "LOAD_DATE" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 

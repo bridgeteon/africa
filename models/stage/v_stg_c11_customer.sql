@@ -1,21 +1,14 @@
 {%- set yaml_metadata -%}
-source_model: 'raw_inventory'
+source_model: 
+  sapc11_tbl: 'KNA1'
 derived_columns:
-  RECORD_SOURCE: '!TPCDS-INVENTORY'
-  EFFECTIVE_FROM: 'INVENTORY_DATE'
+  RECORD_SOURCE: '!SAPC11_KNA1'
+  LOAD_EFF_DT: TO_DATE('{{ var('load_date') }}')
 hashed_columns:
-  LINK_INVENTORY_HK: 
-  - 'ITEM_ID'
-  - 'WAREHOUSE_ID'
-  WAREHOUSE_HK: 'WAREHOUSE_ID'
-  ITEM_HK: 'ITEM_ID'
-  INVENTORY_HASHDIFF:
+  CUSTOMER_HK: 'KUNNR'
+  CUSTOMER_HASHDIFF:
     is_hashdiff: true
-    columns:
-    - 'ITEM_ID'
-    - 'WAREHOUSE_ID'
-    - 'INV_QUANTITY_ON_HAND'
-    - 'WAREHOUSE_NAME'
+    exclude_columns: true
  {%- endset -%}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
