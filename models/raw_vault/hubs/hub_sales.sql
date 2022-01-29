@@ -1,6 +1,6 @@
-{%- set source_model = "v_stg_c11_customer_kna1","v_stg_e03_customer_kna1" -%}
-{%- set src_pk = "CUSTOMER_HK" -%}
-{%- set src_nk = "KUNNR" -%}
+{%- set source_model = "v_stg_c11_sales_vbuk.sql","v_stg_e03_sales_vbuk.sql" -%}
+{%- set src_pk = "SALES_HK" -%}
+{%- set src_nk = "VBELN" -%}
 {%- set src_ldts = "LOAD_DT" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 

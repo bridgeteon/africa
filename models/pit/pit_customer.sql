@@ -13,7 +13,14 @@ satellites:
         'PK': 'CUSTOMER_HK'
     ldts:
         'LDTS': 'LOAD_EFF_DT'
+  SAT_CUSTOMER_E03_KNA1:
+    pk:
+        'PK': 'CUSTOMER_HK'
+    ldts:
+        'LDTS': 'LOAD_EFF_DT'
+src_ldts: 'LOAD_EFF_DT'      
 src_ldts: 'LOAD_EFF_DT'
+
 {%- endset -%}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}

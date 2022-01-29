@@ -1,7 +1,6 @@
 name: dbtvault_snowflake_demo
-profile: dbtvault_snowflake_demo
+profile: default
 version: '5.0.0'
-require-dbt-version: ['>=0.18.0', '<0.19.0']
 config-version: 2
 
 analysis-paths:
