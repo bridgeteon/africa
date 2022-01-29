@@ -1,8 +1,8 @@
 {{ config(materialized='incremental')    }}
 
-{%- set source_model = "v_stg_c11_sales_organization_tvko","v_stg_e03_sales_organization_tvko" -%}
-{%- set src_pk = "SALES_ORG_HK" -%}
-{%- set src_nk = "VKORG","DV_BKEY_CODE" -%}
+{%- set source_model = "v_stg_c11_company_t001","v_stg_e03_company_t001" -%}
+{%- set src_pk = "COMPANY_HK" -%}
+{%- set src_nk = "BUKRS","DV_BKEY_CODE" -%}
 {%- set src_ldts = "LOAD_DATE" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 
