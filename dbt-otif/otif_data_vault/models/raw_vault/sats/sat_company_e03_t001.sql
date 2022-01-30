@@ -4,7 +4,7 @@
 {%- set src_pk = "CUSTOMER_HK" -%}
 {%- set src_hashdiff = "CUSTOMER_HASHDIFF" -%}
 {% set columns_query %}
-select column_name from {{database}}.information_schema.columns where LOWER(table_name) = '{{source_model}}' and table_catalog = 'EDW' and LOWER(table_schema) = '{{schema}}'
+select column_name from '{{database}}'.information_schema.columns where LOWER(table_name) = '{{source_model}}' and table_catalog = 'EDW' and LOWER(table_schema) = '{{schema}}'
 and column_name not like  ('%HASHDIFF') and column_name not like '%HK' and column_name not like 'LOAD_%D%' and column_name <> 'RECORD_SOURCE'
 {% endset %}
 
